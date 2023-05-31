@@ -16,6 +16,10 @@ type SystemInfo struct {
 	UserInfo []host.UserStat        `json:"user_info"`
 }
 
+func (s *SystemInfo) InitRouter(group *gin.RouterGroup) {
+	group.POST("/systeminfo", s.Post)
+}
+
 func (s *SystemInfo) Post(ctx *gin.Context) {
 	info := &SystemInfo{}
 	info.CpuInfo, _ = cpu.Info()
