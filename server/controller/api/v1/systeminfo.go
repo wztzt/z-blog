@@ -14,10 +14,11 @@ type SystemInfo struct {
 	MemInfo  *mem.VirtualMemoryStat `json:"mem_info"`
 	HostInfo *host.InfoStat         `json:"host_info"`
 	UserInfo []host.UserStat        `json:"user_info"`
+	HostName string                 `json:"host_name"`
 }
 
 func (s *SystemInfo) InitRouter(group *gin.RouterGroup) {
-	group.POST("/systeminfo", s.Post)
+	group.GET("/systeminfo", s.Post)
 }
 
 func (s *SystemInfo) Post(ctx *gin.Context) {
@@ -26,6 +27,7 @@ func (s *SystemInfo) Post(ctx *gin.Context) {
 	info.MemInfo, _ = mem.VirtualMemory()
 	info.HostInfo, _ = host.Info()
 	info.UserInfo, _ = host.Users()
+	info.HostName = ctx.Request.Host
 	ctx.JSON(http.StatusOK, info)
 
 }
