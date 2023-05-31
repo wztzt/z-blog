@@ -2,6 +2,8 @@
     <div class="footer">
         <img src = "https://pic1.zhimg.com/80/v2-ac6cd5297968d638be2ddd9bfc810e98_720w.webp"/>
         <button @click="onClick">测试按钮</button>
+        <hr/>
+        <button @click="onClick2">测试按钮2</button>
     </div>
 </template>
 
@@ -17,7 +19,14 @@ const onClick = async ()=> {
     if (response.data === 'login'){
         router.push('/index')
     }
-    
+}
+
+const onClick2 = async ()=> {
+    const response = await request.get('/login')
+    console.log(response.data)
+    if (response.data === 'login'){
+        router.push('/index')
+    }
 }
 
 </script>
