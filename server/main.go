@@ -17,6 +17,7 @@ func main() {
 		Addr:    fmt.Sprintf(":%d", utils.Port),
 		Handler: router,
 	}
+	fmt.Println(utils.Domain, utils.Port)
 	go func() {
 		server.ListenAndServe()
 	}()
