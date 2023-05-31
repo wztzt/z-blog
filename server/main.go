@@ -2,6 +2,7 @@ package main
 
 import (
 	"blog_server/routes"
+	"blog_server/utils"
 	"context"
 	"fmt"
 	"net/http"
@@ -13,10 +14,9 @@ import (
 func main() {
 	router := routes.InitRouter()
 	server := http.Server{
-		Addr:    ":8080",
+		Addr:    fmt.Sprintf(":%d", utils.Port),
 		Handler: router,
 	}
-
 	go func() {
 		server.ListenAndServe()
 	}()

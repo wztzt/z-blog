@@ -1,0 +1,3 @@
+server:
+    domain: utask.top
+    port: 8080
