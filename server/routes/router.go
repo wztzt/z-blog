@@ -18,6 +18,8 @@ func InitRouter() *gin.Engine {
 			ctx.String(http.StatusOK, "login --")
 		})
 		apiv1.OPTIONS("login", user.Options)
+		systeminfo := v1.SystemInfo{}
+		apiv1.POST("systeminfo", systeminfo.Post)
 	}
 	return r
 }
