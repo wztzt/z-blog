@@ -18,5 +18,8 @@ func (u *User) Add(ctx *gin.Context) {
 }
 
 func (u *User) Login(ctx *gin.Context) {
-	ctx.String(http.StatusOK, "login")
+	ctx.JSON(http.StatusOK, gin.H{
+		"msg":       "login",
+		"host_name": ctx.Request.Host,
+	})
 }

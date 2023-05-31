@@ -14,9 +14,9 @@ import {useRouter} from 'vue-router'
 const router = useRouter()
 
 const onClick = async ()=> {
-    const response = await request.post('/login',{'a':'b'})
+    const response = await request.post('/login',{'user':'wz'})
     console.log(response.data)
-    if (response.data === 'login'){
+    if (response.data.msg === 'login'){
         router.push('/index')
     }
 }
