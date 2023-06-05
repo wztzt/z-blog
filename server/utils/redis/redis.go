@@ -2,6 +2,7 @@ package redis
 
 import (
 	"blog_server/utils/config"
+	"fmt"
 	"time"
 
 	"github.com/go-redis/redis"
@@ -10,9 +11,14 @@ import (
 var instance *redis.Client
 
 func init() {
-	instance = redis.NewClient(&redis.Options{
+	aa, _ := redis.ParseURL("redis://red-cg7cfn5269v5l610obtg:6379")
+	fmt.Printf("%+v\n", aa)
+	options := &redis.Options{
 		Addr: config.RedisAddr,
-	})
+	}
+	fmt.Printf("%+v\n", options)
+	instance = redis.NewClient(options)
+	fmt.Println(instance)
 }
 
 func Info() *redis.StringCmd {
