@@ -36,7 +36,7 @@ func parse(config *viper.Viper) {
 	if env_port != "" {
 		Port, _ = strconv.Atoi(env_port)
 	}
-	redis_addr := os.Getenv("redisaddr")
+	redis_addr := os.Getenv("redis_addr")
 	if redis_addr != "" {
 		RedisAddr = redis_addr
 	}
