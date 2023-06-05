@@ -2,22 +2,24 @@ package main
 
 import (
 	"blog_server/routes"
-	"blog_server/utils"
+	"blog_server/utils/config"
 	"context"
 	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	gin.SetMode(config.GetString("server.mode"))
 	router := routes.InitRouter()
 	server := http.Server{
-		Addr:    fmt.Sprintf(":%d", utils.Port),
+		Addr:    fmt.Sprintf(":%d", config.Port),
 		Handler: router,
 	}
-	fmt.Println(utils.Domain, utils.Port)
 	go func() {
 		server.ListenAndServe()
 	}()

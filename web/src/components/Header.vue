@@ -1,9 +1,13 @@
 <template>
-    <div class="footer">
-        <img src = "https://pic1.zhimg.com/80/v2-ac6cd5297968d638be2ddd9bfc810e98_720w.webp"/>
-        <button @click="onClick">测试按钮</button>
-        <hr/>
-        <button @click="onClick2">测试按钮2</button>
+    <div>
+        <form>
+            <input v-model="user"> 
+            <br>
+            <input v-model="password">
+        </form>
+        <button @click="register">注册</button>
+        <button @click="login">登录</button>
+        <button @click="systeminfo">系统信息</button>
     </div>
 </template>
 
@@ -11,22 +15,35 @@
 <script setup lang="ts">
 import request from '../utils/request'
 import {useRouter} from 'vue-router'
+import {ref } from 'vue';
 const router = useRouter()
 
-const onClick = async ()=> {
-    const response = await request.post('/login',{'user':'wz'})
+const user = ref<string>()
+const password = ref<string>()
+
+
+
+
+
+const register = async ()=> {
+    const response = await request.post('/register',{'user':user.value, 'password': password.value})
     console.log(response.data)
-    if (response.data.msg === 'login'){
+    if (response.data.code === 0){
         router.push('/index')
     }
 }
 
-const onClick2 = async ()=> {
-    const response = await request.get('/login')
+const login = async ()=> {
+    const response = await request.post('/login', {'user': user.value, 'password': password.value})
     console.log(response.data)
-    if (response.data === 'login'){
+    if (response.data.code === 0){
         router.push('/index')
     }
+}
+
+const systeminfo =async () => {
+    const response = await request.get("/systeminfo", {})
+    console.log(response.data)
 }
 
 </script>

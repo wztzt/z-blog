@@ -4,12 +4,26 @@ import Header from '../components/Header.vue'
 
 const reoutes:Array<RouteRecordRaw> = [
     {
+        path:"/",
+        component: Header,
+        children:[
+            {
+                path:"/idx",
+                component: Index
+            }
+        ]
+    },
+    {
         path: "/index",
         component: Index
     },
     {
         path: "/head",
         component: Header
+    },
+    {
+        path: "/helloword",
+        component : () => import("../components/HelloWorld.vue")
     }
 ]
 
