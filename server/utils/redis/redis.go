@@ -11,8 +11,12 @@ var instance *redis.Client
 
 func init() {
 	instance = redis.NewClient(&redis.Options{
-		Addr: config.GetString("redis.addr"),
+		Addr: config.RedisAddr,
 	})
+}
+
+func Info() *redis.StringCmd {
+	return instance.Info()
 }
 
 func Set(key string, value interface{}, expiration time.Duration) *redis.StatusCmd {
@@ -21,4 +25,8 @@ func Set(key string, value interface{}, expiration time.Duration) *redis.StatusC
 
 func Get(key string) *redis.StringCmd {
 	return instance.Get(key)
+}
+
+func Exists(keys ...string) *redis.IntCmd {
+	return instance.Exists(keys...)
 }

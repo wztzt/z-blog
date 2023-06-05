@@ -10,8 +10,9 @@ import (
 )
 
 var (
-	config *viper.Viper
-	Port   int
+	config    *viper.Viper
+	Port      int
+	RedisAddr string
 )
 
 func init() {
@@ -34,6 +35,10 @@ func parse(config *viper.Viper) {
 	env_port := os.Getenv("port")
 	if env_port != "" {
 		Port, _ = strconv.Atoi(env_port)
+	}
+	redis_addr := os.Getenv("redisaddr")
+	if redis_addr != "" {
+		RedisAddr = redis_addr
 	}
 }
 
