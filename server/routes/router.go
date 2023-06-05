@@ -10,6 +10,8 @@ func InitRouter() *gin.Engine {
 	r := gin.Default()
 	apiv1 := r.Group("api/v1")
 	{
+		health := &v1.Health{}
+		health.InitRouter(apiv1)
 		user := &v1.User{}
 		user.InitRouter(apiv1)
 		systeminfo := &v1.SystemInfo{}
