@@ -2,6 +2,7 @@ package redis
 
 import (
 	"blog_server/utils/config"
+	"fmt"
 	"time"
 
 	"github.com/go-redis/redis"
@@ -16,6 +17,12 @@ func init() {
 		MinIdleConns: config.RedisIdle,
 	}
 	instance = redis.NewClient(options)
+	result, err := instance.Ping().Result()
+	if err == nil {
+		fmt.Printf("init redis succuss, result = %v, options = %+v\n", result, options)
+	} else {
+		fmt.Printf("init redis faild, error = %v\n", err.Error())
+	}
 
 }
 
