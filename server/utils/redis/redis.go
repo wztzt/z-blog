@@ -11,8 +11,9 @@ var instance *redis.Client
 
 func init() {
 	options := &redis.Options{
-		Addr:     config.RedisAddr,
-		PoolSize: config.RedisPool,
+		Addr:         config.RedisAddr,
+		PoolSize:     config.RedisPool,
+		MinIdleConns: config.RedisIdle,
 	}
 	instance = redis.NewClient(options)
 

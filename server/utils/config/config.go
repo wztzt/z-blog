@@ -14,6 +14,7 @@ var (
 	Port      int
 	RedisAddr string
 	RedisPool int
+	RedisIdle int
 )
 
 func init() {
@@ -35,6 +36,7 @@ func parse(config *viper.Viper) {
 	Port = config.GetInt("server.port")
 	RedisAddr = config.GetString("redis.addr")
 	RedisPool = config.GetInt("redis.poolsize")
+	RedisIdle = config.GetInt("redis.idlesize")
 	env_port := os.Getenv("port")
 	if env_port != "" {
 		Port, _ = strconv.Atoi(env_port)
@@ -46,6 +48,10 @@ func parse(config *viper.Viper) {
 	redis_pool := os.Getenv("redis_pool")
 	if redis_pool != "" {
 		RedisPool, _ = strconv.Atoi(redis_pool)
+	}
+	redis_idle := os.Getenv("redis_idle")
+	if redis_idle != "" {
+		RedisIdle, _ = strconv.Atoi(redis_idle)
 	}
 }
 
