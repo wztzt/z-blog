@@ -2,6 +2,7 @@ package main
 
 import (
 	"blog_server/routes"
+	"blog_server/utils"
 	"blog_server/utils/config"
 	"context"
 	"fmt"
@@ -14,6 +15,8 @@ import (
 )
 
 func main() {
+	utils.Start()
+	defer utils.Close()
 	gin.SetMode(config.GetString("server.mode"))
 	router := routes.InitRouter()
 	server := http.Server{

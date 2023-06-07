@@ -17,8 +17,7 @@ var (
 	RedisIdle int
 )
 
-func init() {
-	fmt.Println("init")
+func Start() {
 	config = viper.New()
 	config.SetConfigName("config")
 	config.SetConfigType("yaml")
@@ -30,6 +29,11 @@ func init() {
 	})
 	config.WatchConfig()
 	parse(config)
+	fmt.Println("config init success~")
+}
+
+func Close() {
+	config = nil
 }
 
 func parse(config *viper.Viper) {
