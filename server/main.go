@@ -24,7 +24,9 @@ func main() {
 		Handler: router,
 	}
 	go func() {
-		server.ListenAndServe()
+		if err := server.ListenAndServe(); err != nil {
+			fmt.Printf("Serve Fail , err = %v\n", err.Error())
+		}
 	}()
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)

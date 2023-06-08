@@ -20,10 +20,10 @@ type SystemInfo struct {
 }
 
 func (s *SystemInfo) InitRouter(group *gin.RouterGroup) {
-	group.GET("/systeminfo", s.Post)
+	group.GET("/systeminfo", s.Get)
 }
 
-func (s *SystemInfo) Post(ctx *gin.Context) {
+func (s *SystemInfo) Get(ctx *gin.Context) {
 	info := &SystemInfo{}
 	info.CpuInfo, _ = cpu.Info()
 	info.MemInfo, _ = mem.VirtualMemory()
