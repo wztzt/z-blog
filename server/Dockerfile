@@ -8,4 +8,7 @@ RUN go build -tags netgo -ldflags "-s -w" -o app &&\
     cd /data/app && \
     rm -rf /data/server
 
+EXPOSE 8081
+
+
 CMD [ "./app" ]
