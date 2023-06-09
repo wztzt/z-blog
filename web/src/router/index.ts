@@ -1,21 +1,26 @@
 import {createRouter,createWebHistory,Router,RouteRecordRaw} from 'vue-router'
 import Index from '../views/index.vue'
 import Header from '../components/Header.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
 
 const reoutes:Array<RouteRecordRaw> = [
     {
         path:"/",
-        component: Header,
-        children:[
-            {
-                path:"/idx",
-                component: Index
-            }
-        ]
+        redirect: "/index"
     },
     {
         path: "/index",
-        component: Index
+        component: Index,
+        children:[
+            {
+                path: 'a',
+                component: HelloWorld
+            },
+            {
+                path:'b',
+                component: Header
+            }
+        ]
     },
     {
         path: "/head",
@@ -23,7 +28,7 @@ const reoutes:Array<RouteRecordRaw> = [
     },
     {
         path: "/helloword",
-        component : () => import("../components/HelloWorld.vue")
+        component : () => HelloWorld
     }
 ]
 

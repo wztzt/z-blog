@@ -8,7 +8,11 @@ const count = ref(0)
 
 <template>
   <h1>{{ msg }}</h1>
-
+  <div class="parent">
+    <button class = 'child'>1</button>
+    <button class = 'child'>2</button>
+    <button class = 'child'>3</button>
+  </div>
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
     <p>
@@ -23,7 +27,7 @@ const count = ref(0)
       >create-vue</a
     >, the official Vue + Vite starter
   </p>
-  <p>
+  <p class="center">
     Install
     <a href="https://github.com/vuejs/language-tools" target="_blank">Volar</a>
     in your IDE for a better DX
@@ -33,6 +37,23 @@ const count = ref(0)
 
 <style scoped>
 .read-the-docs {
+  color: #888;
+}
+
+.parent{
+  display: flex;
+  flex-direction: column;
+  color: red;
+  border: 1px solid black;
+  line-height: 100px;
+  margin: 0 auto;
+}
+
+.child{
+  width: 100px;
+  height: 50px;
+  vertical-align: middle;
+  border: 2px solid blueviolet;
   color: #888;
 }
 </style>
