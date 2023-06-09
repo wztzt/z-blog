@@ -28,7 +28,7 @@ const reoutes:Array<RouteRecordRaw> = [
     },
     {
         path: "/helloword",
-        component : () => HelloWorld
+        component : HelloWorld
     }
 ]
 
