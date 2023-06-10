@@ -7,7 +7,7 @@ RUN go build -tags netgo -ldflags "-s -w" -o app &&\
     mv ./conf /data/app/ && \
     rm -rf /data/server
 
-EXPOSE 8081
+# EXPOSE 8081
 WORKDIR /data/app
 
 
