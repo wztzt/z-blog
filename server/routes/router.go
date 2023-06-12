@@ -18,6 +18,8 @@ func InitRouter() *gin.Engine {
 		systeminfo.InitRouter(apiv1)
 		command := &v1.Command{}
 		apiv1.GET("cmd", command.Get)
+		category := v1.Category{}
+		apiv1.GET("category", category.Get)
 	}
 	return r
 }

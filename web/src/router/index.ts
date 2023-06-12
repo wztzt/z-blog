@@ -2,6 +2,7 @@ import {createRouter,createWebHistory,Router,RouteRecordRaw} from 'vue-router'
 import Index from '../views/index.vue'
 import Header from '../components/Header.vue'
 import HelloWorld from '@/components/HelloWorld.vue'
+import Home from '@/views/Home.vue'
 
 const reoutes:Array<RouteRecordRaw> = [
     {
@@ -9,12 +10,17 @@ const reoutes:Array<RouteRecordRaw> = [
         redirect: "/index"
     },
     {
+        path:'/home',
+        component: Home
+    },
+    {
         path: "/index",
         component: Index,
         children:[
             {
                 path: 'a',
-                component: HelloWorld
+                component: HelloWorld,
+                props: route => ({ msg : route.query.msg})
             },
             {
                 path:'b',

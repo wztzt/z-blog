@@ -12,7 +12,12 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter()
 const routeA = ()=>{
-    router.push("/index/a")
+    router.push({
+        path: '/index/a',
+        query: {
+            msg: 'aaabbb'
+        }
+    })
 }
 
 const routeB = () =>{
