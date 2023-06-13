@@ -21,6 +21,8 @@ func InitRouter() *gin.Engine {
 		category := v1.Category{}
 		apiv1.GET("category", category.Get)
 		apiv1.GET("category/:catename", category.GetByName)
+		upload := &v1.Upload{}
+		apiv1.POST("upload", upload.Post)
 	}
 	return r
 }
