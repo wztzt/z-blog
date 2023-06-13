@@ -1,7 +1,7 @@
 package v1
 
 import (
-	"net/http"
+	"blog_server/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -10,5 +10,5 @@ type Category struct {
 }
 
 func (c *Category) Get(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, []string{"aaa", "bbb", "ccc", "ddd"})
+	utils.ResultOK(ctx, []string{"aaa", "bbb", "ccc"})
 }
