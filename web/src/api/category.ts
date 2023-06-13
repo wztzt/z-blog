@@ -1,5 +1,5 @@
 
-import { resultObj } from '@/modle/ResultObj'
+import { resultObj } from '@/modle/resultObj'
 import request from '@/utils/request'
 
 
