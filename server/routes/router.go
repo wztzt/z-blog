@@ -20,6 +20,7 @@ func InitRouter() *gin.Engine {
 		apiv1.GET("cmd", command.Get)
 		category := v1.Category{}
 		apiv1.GET("category", category.Get)
+		apiv1.GET("category/:catename", category.GetByName)
 	}
 	return r
 }
