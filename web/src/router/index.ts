@@ -1,8 +1,9 @@
 import {createRouter,createWebHistory,Router,RouteRecordRaw} from 'vue-router'
-import Index from '../views/index.vue'
-import Header from '../components/Header.vue'
-import HelloWorld from '@/components/HelloWorld.vue'
-import Home from '@/views/Home.vue'
+
+const Home = ()=>import('@/views/Home.vue')
+const Index =  ()=>import('@/views/index.vue')
+const HelloWord = ()=>import('@/components/HelloWorld.vue')
+const Header = ()=>import('@/components/Header.vue')
 
 const reoutes:Array<RouteRecordRaw> = [
     {
@@ -19,7 +20,7 @@ const reoutes:Array<RouteRecordRaw> = [
         children:[
             {
                 path: 'a',
-                component: HelloWorld,
+                component: HelloWord,
                 props: route => ({ msg : route.query.msg})
             },
             {
@@ -34,7 +35,7 @@ const reoutes:Array<RouteRecordRaw> = [
     },
     {
         path: "/helloword",
-        component : HelloWorld
+        component : HelloWord
     }
 ]
 
